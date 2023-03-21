@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "pulsars",
-    "version": "0.0.0"
+    "version": "0.1.0"
   },
   "tauri": {
     "allowlist": {
@@ -16,6 +16,11 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "dialog": {
+        "all": false,
+        "open": true,
+        "save": true
       }
     },
     "bundle": {
@@ -27,7 +32,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "sh.ron.pulsars",
       "targets": "all"
     },
     "security": {
@@ -40,7 +45,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "pulsars",
+        "title": "Pulsars",
         "width": 800,
         "height": 600
       }

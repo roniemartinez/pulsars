@@ -1,21 +1,35 @@
-import { invoke } from "@tauri-apps/api/tauri";
+import {invoke} from "@tauri-apps/api/tauri";
+import Spreadsheet from "x-data-spreadsheet";
+import saveIcon from './assets/content-save.svg'
+import {save} from "@tauri-apps/api/dialog";
 
-let greetInputEl: HTMLInputElement | null;
-let greetMsgEl: HTMLElement | null;
 
-async function greet() {
-  if (greetMsgEl && greetInputEl) {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    greetMsgEl.textContent = await invoke("greet", {
-      name: greetInputEl.value,
+window.addEventListener("DOMContentLoaded", async () => {
+  const data: JSON = await invoke("serialize");
+
+  new Spreadsheet("#sheet", {
+    extendToolbar: {
+      left: [
+        {
+          tip: 'Save',
+          icon: saveIcon,
+          onClick: async () => {
+            const filePath = await save({
+              filters: [{
+                name: 'Save',
+                extensions: ['xlsx']
+              }]
+            });
+            if (filePath !== null) {
+              await invoke("save", {filePath});
+            }
+          }
+        }
+      ],
+    }
+  })
+    .loadData(data)
+    .change(async data => {
+      await invoke("save_cell", {payload: JSON.stringify(data)});
     });
-  }
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-  greetInputEl = document.querySelector("#greet-input");
-  greetMsgEl = document.querySelector("#greet-msg");
-  document
-    .querySelector("#greet-button")
-    ?.addEventListener("click", () => greet());
 });
