@@ -1,7 +1,12 @@
-# Tauri + Vanilla TS
+# Pulsars
 
-This template should help get you started developing with Tauri in vanilla HTML, CSS and Typescript.
+Tauri-based spreadsheet
 
-## Recommended IDE Setup
+## Author
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+- [Ronie Martinez](mailto:ronmarti18@gmail.com)
+
+## Attribution
+
+- <a href="https://www.flaticon.com/free-icons/miscellaneous" title="miscellaneous icons">Miscellaneous icons created by Freepik - Flaticon</a>
+- 
