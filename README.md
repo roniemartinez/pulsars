@@ -1,6 +1,8 @@
 # Pulsars
 
-Tauri-based spreadsheet
+A Tauri-based spreadsheet
+
+![Pulsars](./screenshots/pulsars.png)
 
 ## Author
 
@@ -9,3 +11,4 @@ Tauri-based spreadsheet
 ## Attribution
 
 - <a href="https://www.flaticon.com/free-icons/miscellaneous" title="miscellaneous icons">Miscellaneous icons created by Freepik - Flaticon</a>
+- https://pictogrammers.com/library/mdi/
