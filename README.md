@@ -1,6 +1,8 @@
 # Pulsars
 
-Tauri-based spreadsheet
+A Tauri-based spreadsheet
+
+![Pulsars](./screenshots/pulsars.png)
 
 ## Author
 

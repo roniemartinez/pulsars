@@ -6,14 +6,14 @@ use serde_json::Value;
 use std::collections::HashMap;
 use std::path::Path;
 use std::sync::Mutex;
-use tauri::{Manager, State};
+use tauri::State;
 use umya_spreadsheet::Spreadsheet;
 
 struct SpreadsheetManager {
     spreadsheet: Mutex<Spreadsheet>,
 }
 
-#[derive(serde::Serialize)]
+#[derive(serde::Serialize, Clone)]
 struct Sheet {
     name: String,
     rows: HashMap<u32, HashMap<String, HashMap<u32, HashMap<String, String>>>>,
@@ -24,10 +24,9 @@ fn serialize(spreadsheet_manager: State<SpreadsheetManager>) -> Vec<Sheet> {
     let spreadsheet = spreadsheet_manager.spreadsheet.lock().unwrap();
 
     // TODO: better serialization to x-spreadsheet format
-    spreadsheet
+    let worksheets = spreadsheet
         .get_sheet_collection()
         .into_iter()
-        // .map(|worksheet| worksheet.get_name())
         .map(|worksheet| {
             let grouped_by_row = worksheet
                 .get_cell_collection()
@@ -63,7 +62,16 @@ fn serialize(spreadsheet_manager: State<SpreadsheetManager>) -> Vec<Sheet> {
                 rows: grouped_by_row,
             }
         })
-        .collect::<Vec<Sheet>>()
+        .collect::<Vec<Sheet>>();
+
+    if worksheets.len() == 0 {
+        return [Sheet {
+            name: "sheet1".to_string(),
+            rows: Default::default(),
+        }]
+        .to_vec();
+    }
+    worksheets
 }
 
 #[tauri::command]
