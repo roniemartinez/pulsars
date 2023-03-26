@@ -4,7 +4,7 @@ A Tauri-based spreadsheet
 
 The following cool libraries made it possible to build **Pulsars** 🚀:
 
-- [fortune-sheet](https://github.com/ruilisi/fortune-sheet): JS library for spreadsheet interface
+- [fortune-sheet](https://github.com/ruilisi/fortune-sheet): TypeScript library for the spreadsheet interface
 - [umya-spreadsheet](https://github.com/MathNya/umya-spreadsheet): Rust library that takes care of reading and writing xlsx files
 
 ![Pulsars](./screenshots/pulsars.png)
