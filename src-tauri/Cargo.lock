@@ -550,6 +550,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "cty"
+version = "0.2.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b365fabc795046672053e29c954733ec3b05e4be654ab130fe8f1f94d7051f35"
+
+[[package]]
 name = "cxx"
 version = "1.0.93"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1355,9 +1361,9 @@ dependencies = [
 
 [[package]]
 name = "ico"
-version = "0.2.0"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "031530fe562d8c8d71c0635013d6d155bbfe8ba0aa4b4d2d24ce8af6b71047bd"
+checksum = "e3804960be0bb5e4edb1e1ad67afd321a9ecfd875c3e65c099468fd2717d7cae"
 dependencies = [
  "byteorder",
  "png",
@@ -1541,17 +1547,6 @@ dependencies = [
 
 [[package]]
 name = "json-patch"
-version = "0.2.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "eb3fa5a61630976fc4c353c70297f2e93f1930e3ccee574d59d618ccbd5154ce"
-dependencies = [
- "serde",
- "serde_json",
- "treediff 3.0.2",
-]
-
-[[package]]
-name = "json-patch"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1f54898088ccb91df1b492cc80029a6fdf1c48ca0db7c6822a8babad69c94658"
@@ -1559,7 +1554,7 @@ dependencies = [
  "serde",
  "serde_json",
  "thiserror",
- "treediff 4.0.2",
+ "treediff",
 ]
 
 [[package]]
@@ -1845,6 +1840,15 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 1.0.109",
+]
+
+[[package]]
+name = "num_threads"
+version = "0.1.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2819ce041d2ee131036f4fc9d6ae7ae125a3a40e97ba64d04fe799ad9dabbb44"
+dependencies = [
+ "libc",
 ]
 
 [[package]]
@@ -2199,7 +2203,7 @@ dependencies = [
 
 [[package]]
 name = "pulsars"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "serde",
  "serde_json",
@@ -2319,9 +2323,12 @@ dependencies = [
 
 [[package]]
 name = "raw-window-handle"
-version = "0.5.1"
+version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4f851a03551ceefd30132e447f07f96cb7011d6b658374f3aed847333adb5559"
+checksum = "ed7e3d950b66e19e0c372f3fa3fbbcf85b1746b571f74e0c2af6042a5c93420a"
+dependencies = [
+ "cty",
+]
 
 [[package]]
 name = "rayon"
@@ -2873,9 +2880,9 @@ dependencies = [
 
 [[package]]
 name = "tauri"
-version = "1.2.4"
+version = "1.2.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fe7e0f1d535e7cbbbab43c82be4fc992b84f9156c16c160955617e0260ebc449"
+checksum = "e3a1fe72365a6d860fddf3403934649a5157b2bbb6f0b50dd3a8858cd1a22412"
 dependencies = [
  "anyhow",
  "cocoa",
@@ -2928,7 +2935,7 @@ dependencies = [
  "anyhow",
  "cargo_toml",
  "heck 0.4.1",
- "json-patch 1.0.0",
+ "json-patch",
  "semver",
  "serde",
  "serde_json",
@@ -2939,14 +2946,14 @@ dependencies = [
 
 [[package]]
 name = "tauri-codegen"
-version = "1.2.1"
+version = "1.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "14388d484b6b1b5dc0f6a7d6cc6433b3b230bec85eaa576adcdf3f9fafa49251"
+checksum = "e5a2105f807c6f50b2fa2ce5abd62ef207bc6f14c9fcc6b8caec437f6fb13bde"
 dependencies = [
- "base64 0.13.1",
+ "base64 0.21.0",
  "brotli",
  "ico",
- "json-patch 0.2.7",
+ "json-patch",
  "plist",
  "png",
  "proc-macro2",
@@ -2965,9 +2972,9 @@ dependencies = [
 
 [[package]]
 name = "tauri-macros"
-version = "1.2.1"
+version = "1.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "069319e5ecbe653a799b94b0690d9f9bf5d00f7b1d3989aa331c524d4e354075"
+checksum = "8784cfe6f5444097e93c69107d1ac5e8f13d02850efa8d8f2a40fe79674cef46"
 dependencies = [
  "heck 0.4.1",
  "proc-macro2",
@@ -2979,9 +2986,9 @@ dependencies = [
 
 [[package]]
 name = "tauri-runtime"
-version = "0.12.1"
+version = "0.12.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c507d954d08ac8705d235bc70ec6975b9054fb95ff7823af72dbb04186596f3b"
+checksum = "dc36898ad4acb6c381878acf903c320a36cf29b68b74f6e791d6045b6557128c"
 dependencies = [
  "gtk",
  "http",
@@ -2992,6 +2999,7 @@ dependencies = [
  "serde_json",
  "tauri-utils",
  "thiserror",
+ "url",
  "uuid",
  "webview2-com",
  "windows 0.39.0",
@@ -2999,9 +3007,9 @@ dependencies = [
 
 [[package]]
 name = "tauri-runtime-wry"
-version = "0.12.2"
+version = "0.12.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "36b1c5764a41a13176a4599b5b7bd0881bea7d94dfe45e1e755f789b98317e30"
+checksum = "e2ebc22bc5566ba33310744fadd86709fa591ed163491b165855474523ac1aab"
 dependencies = [
  "cocoa",
  "gtk",
@@ -3010,6 +3018,7 @@ dependencies = [
  "raw-window-handle",
  "tauri-runtime",
  "tauri-utils",
+ "url",
  "uuid",
  "webkit2gtk",
  "webview2-com",
@@ -3029,7 +3038,7 @@ dependencies = [
  "heck 0.4.1",
  "html5ever",
  "infer",
- "json-patch 1.0.0",
+ "json-patch",
  "kuchiki",
  "memchr",
  "phf 0.10.1",
@@ -3143,29 +3152,14 @@ dependencies = [
 
 [[package]]
 name = "time"
-version = "0.3.20"
+version = "0.3.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cd0cbfecb4d19b5ea75bb31ad904eb5b9fa13f21079c3b92017ebdf4999a5890"
+checksum = "d634a985c4d4238ec39cacaed2e7ae552fbd3c476b552c1deac3021b7d7eaf0c"
 dependencies = [
  "itoa 1.0.6",
+ "libc",
+ "num_threads",
  "serde",
- "time-core",
- "time-macros",
-]
-
-[[package]]
-name = "time-core"
-version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2e153e1f1acaef8acc537e68b44906d2db6436e2b35ac2c6b42640fff91f00fd"
-
-[[package]]
-name = "time-macros"
-version = "0.2.8"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fd80a657e71da814b8e5d60d3374fc6d35045062245d80224748ae522dd76f36"
-dependencies = [
- "time-core",
 ]
 
 [[package]]
@@ -3300,15 +3294,6 @@ dependencies = [
  "tracing",
  "tracing-core",
  "tracing-log",
-]
-
-[[package]]
-name = "treediff"
-version = "3.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "761e8d5ad7ce14bb82b7e61ccc0ca961005a275a060b9644a2431aa11553c2ff"
-dependencies = [
- "serde_json",
 ]
 
 [[package]]

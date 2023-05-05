@@ -384,7 +384,7 @@ fn apply_ops(ops: Vec<Op>, spreadsheet_manager: State<SpreadsheetManager>) {
                     worksheet.remove_cell((column, row));
                     worksheet
                         .get_cell_mut((column, row))
-                        .set_value_from_string(op.value.as_str().unwrap());
+                        .set_value_string(op.value.as_str().unwrap());
                 }
                 ("ff", _) => {
                     worksheet
