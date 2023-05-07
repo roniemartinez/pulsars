@@ -5,8 +5,7 @@ use serde_json::Value;
 use std::collections::HashMap;
 use std::path::Path;
 use std::sync::Mutex;
-use tauri::api::dialog::FileDialogBuilder;
-use tauri::{CustomMenuItem, Manager, Menu, MenuItem, State, Submenu, Wry};
+use tauri::{Manager, State, Wry};
 use umya_spreadsheet::{CellRawValue, Color, Spreadsheet};
 
 // https://github.com/ClosedXML/ClosedXML/wiki/Excel-Indexed-Colors
@@ -472,8 +471,6 @@ fn number_to_bool(value: Value) -> bool {
 }
 
 fn main() {
-    let menu = create_menu_items();
-
     let spreadsheet = umya_spreadsheet::new_file();
     let mut sheet_map = HashMap::new();
 
@@ -490,7 +487,6 @@ fn main() {
     };
 
     tauri::Builder::default()
-        .menu(menu)
         .manage(state)
         // .setup(|app| {
         //     #[cfg(debug_assertions)] // only include this code on debug builds
@@ -502,81 +498,7 @@ fn main() {
         //
         //     Ok(())
         // })
-        .on_menu_event(|event| {
-            match event.menu_item_id() {
-                "open" => {
-                    FileDialogBuilder::new()
-                        .set_title("Open XLSX file")
-                        .add_filter("Open", &["xlsx"])
-                        .pick_file(move |file_path| {
-                            match file_path {
-                                Some(path) => {
-                                    open(
-                                        path.as_path(),
-                                        event.window().state(),
-                                        event.window().app_handle(),
-                                    );
-                                }
-                                None => {}
-                            };
-                        });
-                }
-                "save" => {
-                    FileDialogBuilder::new()
-                        .set_title("Save XLSX file")
-                        .add_filter("Save", &["xlsx"])
-                        .save_file(move |file_path| {
-                            match file_path {
-                                Some(path) => {
-                                    save(path.as_path(), event.window().state());
-                                }
-                                None => {}
-                            };
-                        });
-                }
-                _ => {}
-            };
-        })
         .invoke_handler(tauri::generate_handler![open, save, serialize, apply_ops])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
-}
-
-fn create_menu_items() -> Menu {
-    let app_name = "Pulsars";
-    let mut menu = Menu::new();
-    #[cfg(target_os = "macos")]
-    {
-        menu = menu.add_submenu(Submenu::new(
-            app_name,
-            Menu::new().add_native_item(MenuItem::Quit),
-        ));
-    }
-    let mut file_menu = Menu::new();
-    let mut open_menu = CustomMenuItem::new("open".to_string(), "Open");
-    let mut save_menu = CustomMenuItem::new("save".to_string(), "Save");
-    #[cfg(target_os = "macos")]
-    {
-        open_menu = open_menu.accelerator("CMD+O");
-        save_menu = save_menu.accelerator("CMD+S");
-    }
-    #[cfg(not(target_os = "macos"))]
-    {
-        open_menu = open_menu.accelerator("CTRL+O");
-        save_menu = save_menu.accelerator("CTRL+S");
-    }
-
-    file_menu = file_menu
-        .add_item(open_menu)
-        .add_item(save_menu)
-        .add_native_item(MenuItem::Separator)
-        .add_native_item(MenuItem::CloseWindow);
-
-    #[cfg(not(target_os = "macos"))]
-    {
-        file_menu = file_menu.add_native_item(MenuItem::Quit);
-    }
-
-    menu = menu.add_submenu(Submenu::new("File", file_menu));
-    menu
 }
