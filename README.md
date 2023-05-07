@@ -15,4 +15,5 @@ The following cool libraries made it possible to build **Pulsars** 🚀:
 
 ## Attribution
 
-- <a href="https://www.flaticon.com/free-icons/miscellaneous" title="miscellaneous icons">Miscellaneous icons created by Freepik - Flaticon</a>
+- Application Icon: <a href="https://www.flaticon.com/free-icons/miscellaneous" title="miscellaneous icons">Miscellaneous icons created by Freepik - Flaticon</a>
+- Toolbar Icons: https://pictogrammers.com/library/mdil/

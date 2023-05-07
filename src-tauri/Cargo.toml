@@ -1,6 +1,6 @@
 [package]
 name = "pulsars"
-version = "0.1.1"
+version = "0.2.0"
 description = "Tauri-based spreadsheet"
 authors = ["Ronie Martinez <ronmarti18@gmail.com>"]
 license = "GPL-3.0-or-later"
@@ -11,7 +11,7 @@ edition = "2021"
 # https://tauri.app/v1/guides/building/app-size/#rust-build-time-optimizations
 codegen-units = 1
 lto = true
-opt-level = "s"
+opt-level = "z"
 strip = true
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
