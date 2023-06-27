@@ -435,16 +435,22 @@ fn apply_ops(ops: Vec<Op>, spreadsheet_manager: State<SpreadsheetManager>) {
                         .unwrap()
                         .get("t")
                         .unwrap()
-                        .to_string();
+                        .as_str()
+                        .unwrap();
                     let value = value_map.get("v").unwrap();
 
                     worksheet.remove_cell((column, row));
 
                     let cell = worksheet.get_cell_mut((column, row));
 
-                    match cell_type.as_str() {
+                    match cell_type {
                         "n" => {
-                            cell.set_value_number(value.as_f64().unwrap());
+                            let number = if value.is_number() {
+                                value.as_f64().unwrap()
+                            } else {
+                                value.as_str().unwrap().parse::<f64>().unwrap()
+                            };
+                            cell.set_value_number(number);
                         }
                         _ => {
                             cell.set_value_string(value.as_str().unwrap());
