@@ -571,10 +571,10 @@
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.3.tgz#cef09e3ec9af1d63d2a6cc5b383a737e24e6dcf5"
   integrity sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==
 
-"@vitejs/plugin-react@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@vitejs/plugin-react/-/plugin-react-4.0.1.tgz#793aa790633433558da7ac0a38c58ddf47dff518"
-  integrity sha512-g25lL98essfeSj43HJ0o4DMp0325XK0ITkxpgChzJU/CyemgyChtlxfnRbjfwxDGCTRxTiXtQAsdebQXKMRSOA==
+"@vitejs/plugin-react@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@vitejs/plugin-react/-/plugin-react-4.0.2.tgz#cd25adc113c4c6f504b2e32e28230d399bfba334"
+  integrity sha512-zbnVp3Esfg33zDaoLrjxG+p/dPiOtpvJA+1oOEQwSxMMTRL9zi1eghIcd2WtLjkcKnPsa3S15LzS/OzDn2BOCA==
   dependencies:
     "@babel/core" "^7.22.5"
     "@babel/plugin-transform-react-jsx-self" "^7.22.5"
