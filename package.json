@@ -21,7 +21,7 @@
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.4",
     "eslint": "^8.46.0",
-    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react": "^7.33.1",
     "vite": "^4.4.7"
   }
 }
