@@ -365,10 +365,10 @@
     bessel "^1.0.2"
     jstat "^1.9.2"
 
-"@fortune-sheet/core@^0.18.3":
-  version "0.18.3"
-  resolved "https://registry.yarnpkg.com/@fortune-sheet/core/-/core-0.18.3.tgz#fa77f58214dfce878cb27eba5254effe382601a5"
-  integrity sha512-aHd6USgnkd4wRs76E8NK5qp5NwOVN9b/IhbZXuhws0EVKFrawu7y7ICbFAnQwIDzby+8bivudafcGuoudmdhrw==
+"@fortune-sheet/core@^0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@fortune-sheet/core/-/core-0.19.0.tgz#880c4ea3000fbd40bec70be156e1c9ab37807efa"
+  integrity sha512-PAWazXTgtUgi0MyDoyZsA1U/imfE2bM7M/4G93SxEe9sDuTqTaYRB0XbsJyKxbSmECXoWAugaYAFLzLJuIDtow==
   dependencies:
     "@fortune-sheet/formula-parser" "^0.2.10"
     dayjs "^1.11.0"
@@ -385,12 +385,12 @@
     "@formulajs/formulajs" "^2.9.3"
     tiny-emitter "^2.1.0"
 
-"@fortune-sheet/react@^0.18.3":
-  version "0.18.3"
-  resolved "https://registry.yarnpkg.com/@fortune-sheet/react/-/react-0.18.3.tgz#59aa45ab816f6c81e0f285f5baa0608532679ff9"
-  integrity sha512-sAADbAYwWz1xLsusrkPO7ThESsg7Rgw/5OmeACOt+RMM78bKQw9/HfwHfQ9V1QvVpHa/HlA41An/Y/kIxg9IlA==
+"@fortune-sheet/react@^0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@fortune-sheet/react/-/react-0.19.0.tgz#ff4bf83e521a825242a60de872e33521d45cbc55"
+  integrity sha512-VupbkIwI6qMXTGNeaRqQIoZZuqUqJ54Gdp73Lu/iz5YwgsIQI4hbnsZ0sG5Qeb2dPAfMSnItnjqWGfR+spFPMA==
   dependencies:
-    "@fortune-sheet/core" "^0.18.3"
+    "@fortune-sheet/core" "^0.19.0"
     immer "^9.0.12"
     lodash "^4.17.21"
 
