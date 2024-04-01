@@ -210,7 +210,7 @@ fn serialize(spreadsheet_manager: State<SpreadsheetManager>) -> Vec<Sheet> {
 
                     let m = cell.get_value();
 
-                    let (value, format_definition, cell_type) = match cell.get_data_type() {
+                    let (value, format_definition, cell_type) = match cell.get_raw_value() {
                         CellRawValue::String(s) => (
                             Value::from(s.to_string()),
                             "General".to_string(),
@@ -465,13 +465,10 @@ fn apply_ops(ops: Vec<Op>, spreadsheet_manager: State<SpreadsheetManager>) {
 
 fn number_to_bool(value: Value) -> bool {
     match value {
-        Value::Number(n) => {
-            if n.as_u64() == Some(1u64) {
-                true
-            } else {
-                false
-            }
-        }
+        Value::Number(n) => match n.as_u64() {
+            Some(1u64) => true,
+            _ => false,
+        },
         _ => false,
     }
 }
