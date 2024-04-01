@@ -210,7 +210,7 @@ fn serialize(spreadsheet_manager: State<SpreadsheetManager>) -> Vec<Sheet> {
 
                     let m = cell.get_value();
 
-                    let (value, format_definition, cell_type) = match cell.get_data_type() {
+                    let (value, format_definition, cell_type) = match cell.get_raw_value() {
                         CellRawValue::String(s) => (
                             Value::from(s.to_string()),
                             "General".to_string(),
@@ -243,7 +243,7 @@ fn serialize(spreadsheet_manager: State<SpreadsheetManager>) -> Vec<Sheet> {
                     let (font_family, font_size, font_color, bold, italic, strike) =
                         match cell.get_style().get_font() {
                             Some(font) => {
-                                // FIXME: When xlsx file is written bu Numbers (Mac), the colors are different
+                                // FIXME: When xlsx file is written by Numbers (Mac), the colors are different
                                 let color = font.get_color();
                                 let indexed_color = color.get_indexed();
                                 let themed_color = color.get_theme_index();
@@ -465,13 +465,10 @@ fn apply_ops(ops: Vec<Op>, spreadsheet_manager: State<SpreadsheetManager>) {
 
 fn number_to_bool(value: Value) -> bool {
     match value {
-        Value::Number(n) => {
-            if n.as_u64() == Some(1u64) {
-                true
-            } else {
-                false
-            }
-        }
+        Value::Number(n) => match n.as_u64() {
+            Some(1u64) => true,
+            _ => false,
+        },
         _ => false,
     }
 }
