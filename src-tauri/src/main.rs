@@ -243,7 +243,7 @@ fn serialize(spreadsheet_manager: State<SpreadsheetManager>) -> Vec<Sheet> {
                     let (font_family, font_size, font_color, bold, italic, strike) =
                         match cell.get_style().get_font() {
                             Some(font) => {
-                                // FIXME: When xlsx file is written bu Numbers (Mac), the colors are different
+                                // FIXME: When xlsx file is written by Numbers (Mac), the colors are different
                                 let color = font.get_color();
                                 let indexed_color = color.get_indexed();
                                 let themed_color = color.get_theme_index();
