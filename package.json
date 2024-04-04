@@ -22,6 +22,6 @@
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
-    "vite": "^5.2.7"
+    "vite": "^5.2.8"
   }
 }
