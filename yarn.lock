@@ -436,32 +436,32 @@
     bessel "^1.0.2"
     jstat "^1.9.2"
 
-"@fortune-sheet/core@^0.19.8":
-  version "0.19.8"
-  resolved "https://registry.yarnpkg.com/@fortune-sheet/core/-/core-0.19.8.tgz#7e14f87618febc4d9e19e07609600b56b707c761"
-  integrity sha512-0gK9q9aM6pwSOq836jnM/2jhlzEbWoDha6l//zUEmnA6SDFHZ63zRHTXM8d64S7+nkO8cZkwL5hGflL3v8FUOw==
+"@fortune-sheet/core@^0.19.9":
+  version "0.19.9"
+  resolved "https://registry.yarnpkg.com/@fortune-sheet/core/-/core-0.19.9.tgz#ae79aa90c4497ee717703ee883473c410e61d6ea"
+  integrity sha512-xzAKFCc9hODofJvLQjIyIo0ixddlLyTnwcx8rWIRCRmXzStIlBWHpaO8up2r5UUj4nA0AjQEcEsyetHmLKZW9w==
   dependencies:
-    "@fortune-sheet/formula-parser" "^0.2.11"
+    "@fortune-sheet/formula-parser" "^0.2.12"
     dayjs "^1.11.0"
     immer "^9.0.12"
     lodash "^4.17.21"
     numeral "^2.0.6"
     uuid "^8.3.2"
 
-"@fortune-sheet/formula-parser@^0.2.11":
-  version "0.2.11"
-  resolved "https://registry.yarnpkg.com/@fortune-sheet/formula-parser/-/formula-parser-0.2.11.tgz#d05ebaf0b3cdbaa92ca4cf40d5a816a80e0f3bdd"
-  integrity sha512-phKoYu9Qx+jhE5o+eG3B79eOVmGBBQjMGH6Mg91+W2AsGbDi5EIOkFkNSUagOcb/CpVFeOOG6Vd3OdS00vhOVQ==
+"@fortune-sheet/formula-parser@^0.2.12":
+  version "0.2.12"
+  resolved "https://registry.yarnpkg.com/@fortune-sheet/formula-parser/-/formula-parser-0.2.12.tgz#0650af13b15f37108c1e6c0b960563b561cd63fd"
+  integrity sha512-CwoS/PGgKEtZz35raUbNKKXIuXqdCMNcsFZqO51msw5+IgYy5rOyvfkRFrt1mMej58gkL+mh1gk0tR5WRGs47A==
   dependencies:
     "@formulajs/formulajs" "^2.9.3"
     tiny-emitter "^2.1.0"
 
-"@fortune-sheet/react@^0.19.8":
-  version "0.19.8"
-  resolved "https://registry.yarnpkg.com/@fortune-sheet/react/-/react-0.19.8.tgz#f80fb39f9c9c68a3464b507e1a4daccdc06a4e13"
-  integrity sha512-ZRTY4u+2Asi+aCWuepH1d0E7wDD5tJYOUhl5wMjDcA2vVc44/PwG+0z31SvVHzPqtb2UegFkbVUbyQAjZICRcA==
+"@fortune-sheet/react@^0.19.9":
+  version "0.19.9"
+  resolved "https://registry.yarnpkg.com/@fortune-sheet/react/-/react-0.19.9.tgz#cd0115fc64a4bdaaf4bf5fd23e50778545092632"
+  integrity sha512-yVmZWg4jkqj5fcMebbhIBmn/u0Rw7wgXaK9OipiKwOkAfDMi0IOKkXPI7tRCGBhuwzEr1qqSrwjIBnqS2hYOWQ==
   dependencies:
-    "@fortune-sheet/core" "^0.19.8"
+    "@fortune-sheet/core" "^0.19.9"
     immer "^9.0.12"
     lodash "^4.17.21"
 
