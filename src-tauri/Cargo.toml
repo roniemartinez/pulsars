@@ -22,7 +22,7 @@ tauri-build = { version = "1.5.2", features = [] }
 [dependencies]
 tauri = { version = "1.6.8", features = ["dialog-open", "dialog-save", "shell-open"] }
 serde = { version = "1.0.203", features = ["derive"] }
-serde_json = "1.0.117"
+serde_json = "1.0.118"
 umya-spreadsheet = "1.2.7"
 
 [features]
