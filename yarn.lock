@@ -436,10 +436,10 @@
     bessel "^1.0.2"
     jstat "^1.9.2"
 
-"@fortune-sheet/core@^0.19.9":
-  version "0.19.9"
-  resolved "https://registry.yarnpkg.com/@fortune-sheet/core/-/core-0.19.9.tgz#ae79aa90c4497ee717703ee883473c410e61d6ea"
-  integrity sha512-xzAKFCc9hODofJvLQjIyIo0ixddlLyTnwcx8rWIRCRmXzStIlBWHpaO8up2r5UUj4nA0AjQEcEsyetHmLKZW9w==
+"@fortune-sheet/core@^0.19.10":
+  version "0.19.10"
+  resolved "https://registry.yarnpkg.com/@fortune-sheet/core/-/core-0.19.10.tgz#32f64418f2293aacb951f16599c19240cf625481"
+  integrity sha512-L77J8MacSo6I+YJvPgCGwWg5F4FA1uUkq9A2DcegGP4PwgxnjwU0uF44YKCtAE7iFn3/hch2jUWVSKYW1YaemQ==
   dependencies:
     "@fortune-sheet/formula-parser" "^0.2.12"
     dayjs "^1.11.0"
@@ -456,14 +456,16 @@
     "@formulajs/formulajs" "^2.9.3"
     tiny-emitter "^2.1.0"
 
-"@fortune-sheet/react@^0.19.9":
-  version "0.19.9"
-  resolved "https://registry.yarnpkg.com/@fortune-sheet/react/-/react-0.19.9.tgz#cd0115fc64a4bdaaf4bf5fd23e50778545092632"
-  integrity sha512-yVmZWg4jkqj5fcMebbhIBmn/u0Rw7wgXaK9OipiKwOkAfDMi0IOKkXPI7tRCGBhuwzEr1qqSrwjIBnqS2hYOWQ==
+"@fortune-sheet/react@^0.19.10":
+  version "0.19.10"
+  resolved "https://registry.yarnpkg.com/@fortune-sheet/react/-/react-0.19.10.tgz#acdb4691f828c8be32daa3aa4c752b858aa00be3"
+  integrity sha512-J44rsnCJM4iHC7fvy9TXpZqEkwCxAFoZz83EZsXsL/YGl2ts9nBf4Q7XPPKpWzI/JHJTpHnZ/PPZo2u09huw/Q==
   dependencies:
-    "@fortune-sheet/core" "^0.19.9"
+    "@fortune-sheet/core" "^0.19.10"
+    "@types/regenerator-runtime" "^0.13.6"
     immer "^9.0.12"
     lodash "^4.17.21"
+    regenerator-runtime "^0.14.1"
 
 "@humanwhocodes/config-array@^0.11.14":
   version "0.11.14"
@@ -752,6 +754,11 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
+
+"@types/regenerator-runtime@^0.13.6":
+  version "0.13.6"
+  resolved "https://registry.yarnpkg.com/@types/regenerator-runtime/-/regenerator-runtime-0.13.6.tgz#3320ca604eda6075b05fb2ed0c17e50753ac671c"
+  integrity sha512-tTvE2t4YvfK6k7IB0wzzpdFDGimfpBhsirSWVvrT0xeawfVckNcOC28MI87HlxQJfqXfvRst7snG/i2NS1KgsQ==
 
 "@ungap/structured-clone@^1.2.0":
   version "1.2.0"
@@ -2390,6 +2397,11 @@ reflect.getprototypeof@^1.0.4:
     get-intrinsic "^1.2.1"
     globalthis "^1.0.3"
     which-builtin-type "^1.1.3"
+
+regenerator-runtime@^0.14.1:
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.14.1.tgz#356ade10263f685dda125100cd862c1db895327f"
+  integrity sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==
 
 regexp.prototype.flags@^1.5.1:
   version "1.5.1"

@@ -10,7 +10,7 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "@fortune-sheet/react": "^0.19.9",
+    "@fortune-sheet/react": "^0.19.10",
     "@tauri-apps/api": "^1.6.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
