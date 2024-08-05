@@ -3832,9 +3832,9 @@ checksum = "ed646292ffc8188ef8ea4d1e0e0150fb15a5c2e12ad9b8fc191ae7a8a7f3c4b9"
 
 [[package]]
 name = "umya-spreadsheet"
-version = "2.0.0"
+version = "2.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "12e4fc303e1086132bf4247be73a4283d33874d2799086b2f513b4af2979fd40"
+checksum = "d6fc22c8b9fbeb5c2a22a9d1ea712a596a74b2f35b9b06c5e163ee93ce3628d2"
 dependencies = [
  "aes",
  "ahash",
