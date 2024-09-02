@@ -17,7 +17,7 @@ strip = true
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [build-dependencies]
-tauri-build = { version = "1.5.3", features = [] }
+tauri-build = { version = "1.5.4", features = [] }
 
 [dependencies]
 tauri = { version = "1.7.2", features = ["dialog-open", "dialog-save", "shell-open"] }
