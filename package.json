@@ -12,12 +12,12 @@
   "dependencies": {
     "@fortune-sheet/react": "^0.19.15",
     "@tauri-apps/api": "^1.6.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.6.2",
-    "@types/react": "^18.3.5",
+    "@types/react": "^19.0.0",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "eslint": "^9.10.0",
