@@ -1,6 +1,6 @@
 [package]
 name = "pulsars"
-version = "0.2.3"
+version = "1.0.0"
 description = "Tauri-based spreadsheet"
 authors = ["Ronie Martinez <ronmarti18@gmail.com>"]
 license = "GPL-3.0-or-later"
@@ -8,24 +8,30 @@ repository = "https://github.com/roniemartinez/pulsars"
 edition = "2021"
 
 [profile.release]
-# https://tauri.app/v1/guides/building/app-size/#rust-build-time-optimizations
-codegen-units = 1
-lto = true
-opt-level = "z"
-strip = true
+# https://v2.tauri.app/concept/size/
+codegen-units = 1 # Allows LLVM to perform better optimization.
+lto = true # Enables link-time-optimizations.
+opt-level = "s" # Prioritizes small binary size. Use `3` if you prefer speed.
+panic = "abort" # Higher performance by disabling panic handlers.
+strip = true # Ensures debug symbols are removed.
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "pulsars_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
 [build-dependencies]
-tauri-build = { version = "1.5.5", features = [] }
+tauri-build = { version = "2.0.6", features = [] }
 
 [dependencies]
-tauri = { version = "1.8.1", features = ["dialog-open", "dialog-save", "shell-open"] }
-serde = { version = "1.0.217", features = ["derive"] }
-serde_json = "1.0.134"
-umya-spreadsheet = "2.0.2"
+tauri = { version = "2.3.1", features = [] }
+tauri-plugin-opener = "2.2.6"
+serde = { version = "1.0.218", features = ["derive"] }
+serde_json = "1.0.140"
+tauri-plugin-dialog = "2.2.0"
+umya-spreadsheet = "2.2.3"
 
-[features]
-# this feature is used for production builds or when `devPath` points to the filesystem
-# DO NOT REMOVE!!
-custom-protocol = ["tauri/custom-protocol"]
