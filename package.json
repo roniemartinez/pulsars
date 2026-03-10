@@ -14,7 +14,7 @@
     "@fortune-sheet/react": "^1.0.2",
     "@tauri-apps/api": "^2.4.0",
     "@tauri-apps/plugin-dialog": "~2.2.0",
-    "@tauri-apps/plugin-opener": "^2.2.6",
+    "@tauri-apps/plugin-opener": "^2.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
