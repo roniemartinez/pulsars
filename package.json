@@ -1,31 +1,41 @@
 {
   "name": "pulsars",
+  "version": "1.1.0",
   "private": true,
-  "version": "1.0.0",
+  "description": "Tauri-based spreadsheet",
+  "author": "Ronie Martinez <ronmarti18@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roniemartinez/pulsars.git"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
+    "serve": "vite preview",
     "tauri": "tauri",
-    "lint": "prettier --write . && eslint ."
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check",
+    "format": "biome check --write"
   },
   "dependencies": {
-    "@fortune-sheet/react": "^1.0.2",
-    "@tauri-apps/api": "^2.4.0",
-    "@tauri-apps/plugin-dialog": "~2.2.0",
-    "@tauri-apps/plugin-opener": "^2.2.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@fortune-sheet/core": "1.0.4",
+    "@fortune-sheet/react": "1.0.4",
+    "@tauri-apps/api": "2.11.1",
+    "@tauri-apps/plugin-dialog": "2.7.2",
+    "@tauri-apps/plugin-opener": "2.5.4",
+    "lucide-react": "1.31.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@eslint/js": "^9.31.0",
-    "@tauri-apps/cli": "^2",
-    "@vitejs/plugin-react": "^4.3.4",
-    "eslint": "^9.38.0",
-    "eslint-plugin-react": "^7.37.4",
-    "globals": "^17.4.0",
-    "prettier": "^3.5.3",
-    "vite": "^6.2.2"
+    "@biomejs/biome": "2.5.8",
+    "@tauri-apps/cli": "2.11.4",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "@vitejs/plugin-react": "6.0.5",
+    "typescript": "7.0.2",
+    "vite": "8.2.1"
   }
 }

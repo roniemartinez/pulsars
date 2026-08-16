@@ -1,23 +1,60 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
-
 version: 2
 updates:
-
-  # Enable version updates for Rust
-  - package-ecosystem: "cargo"
-    directory: "/src-tauri" # Location of package manifests
-    schedule:
-      interval: "daily"
-
-  # Enable version updates for Javascript
   - package-ecosystem: "npm"
-    directory: "/" # Location of package manifests
+    directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    cooldown:
+      default-days: 1
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
     groups:
-      types:
+      tauri:
         patterns:
-          - "@types/*"
+          - "@tauri-apps/*"
+      fortune-sheet:
+        patterns:
+          - "@fortune-sheet/*"
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+
+  - package-ecosystem: "cargo"
+    directory: "/src-tauri"
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 1
+    commit-message:
+      prefix: "build"
+    groups:
+      tauri:
+        patterns:
+          - "tauri"
+          - "tauri-*"
+
+  - package-ecosystem: "pre-commit"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 1
+    commit-message:
+      prefix: "ci"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 1
+    commit-message:
+      prefix: "ci"
+    groups:
+      actions:
+        patterns:
+          - "*"

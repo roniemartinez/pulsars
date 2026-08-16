@@ -1,11 +1,11 @@
 [package]
 name = "pulsars"
-version = "1.0.0"
+version = "1.1.0"
 description = "Tauri-based spreadsheet"
 authors = ["Ronie Martinez <ronmarti18@gmail.com>"]
 license = "GPL-3.0-or-later"
 repository = "https://github.com/roniemartinez/pulsars"
-edition = "2021"
+edition = "2024"
 
 [profile.release]
 # https://v2.tauri.app/concept/size/
@@ -25,13 +25,12 @@ name = "pulsars_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
-tauri-build = { version = "2.0.6", features = [] }
+tauri-build = { version = "2.6.3", features = [] }
 
 [dependencies]
-tauri = { version = "2.4.0", features = [] }
-tauri-plugin-opener = "2.2.6"
-serde = { version = "1.0.219", features = ["derive"] }
-serde_json = "1.0.140"
-tauri-plugin-dialog = "2.2.0"
-umya-spreadsheet = "2.2.3"
-
+tauri = { version = "2.11.5", features = [] }
+tauri-plugin-opener = "2.5.4"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+tauri-plugin-dialog = "2.7.2"
+umya-spreadsheet = "3.0.1"

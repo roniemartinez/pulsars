@@ -74,6 +74,29 @@ ignore = [
     #{ id = "RUSTSEC-0000-0000", reason = "you can specify a reason the advisory is ignored" },
     #"a-crate-that-is-yanked@0.1.1", # you can also ignore yanked crate versions if you wish
     #{ crate = "a-crate-that-is-yanked@0.1.1", reason = "you can specify why you are ignoring the yanked crate" },
+
+    # GTK3 bindings, reached through tauri for the Linux webview. Tauri v2 has
+    # no GTK4 path yet.
+    { id = "RUSTSEC-2024-0411", reason = "gdkwayland-sys, transitive via tauri" },
+    { id = "RUSTSEC-2024-0412", reason = "gdk, transitive via tauri" },
+    { id = "RUSTSEC-2024-0413", reason = "atk, transitive via tauri" },
+    { id = "RUSTSEC-2024-0414", reason = "gdkx11-sys, transitive via tauri" },
+    { id = "RUSTSEC-2024-0415", reason = "gtk, transitive via tauri" },
+    { id = "RUSTSEC-2024-0416", reason = "atk-sys, transitive via tauri" },
+    { id = "RUSTSEC-2024-0417", reason = "gdkx11, transitive via tauri" },
+    { id = "RUSTSEC-2024-0418", reason = "gdk-sys, transitive via tauri" },
+    { id = "RUSTSEC-2024-0419", reason = "gtk3-macros, transitive via tauri" },
+    { id = "RUSTSEC-2024-0420", reason = "gtk-sys, transitive via tauri" },
+
+    # Unicode character tables, reached through umya-spreadsheet.
+    { id = "RUSTSEC-2025-0075", reason = "unic-char-range, transitive via umya-spreadsheet" },
+    { id = "RUSTSEC-2025-0080", reason = "unic-common, transitive via umya-spreadsheet" },
+    { id = "RUSTSEC-2025-0081", reason = "unic-char-property, transitive via umya-spreadsheet" },
+    { id = "RUSTSEC-2025-0098", reason = "unic-ucd-version, transitive via umya-spreadsheet" },
+    { id = "RUSTSEC-2025-0100", reason = "unic-ucd-ident, transitive via umya-spreadsheet" },
+
+    # Superseded proc-macro error helper, reached as a build dependency.
+    { id = "RUSTSEC-2024-0370", reason = "proc-macro-error, transitive build dependency" },
 ]
 # If this is true, then cargo deny will use the git executable to fetch advisory database.
 # If this is false, then it uses a built-in git library.
@@ -89,17 +112,18 @@ ignore = [
 # See https://spdx.org/licenses/ for list of possible licenses
 # [possible values: any SPDX 3.11 short identifier (+ optional exception)].
 allow = [
-    "MIT",
     "Apache-2.0",
     "Apache-2.0 WITH LLVM-exception",
-    "Unicode-3.0",
     "BSD-2-Clause",
     "BSD-3-Clause",
+    "BSL-1.0",
+    "GPL-3.0-or-later",
+    "ISC",
+    "MIT",
     "MPL-2.0",
     "NCSA",
-    "BSL-1.0",
-    "GPL-3.0",
-    "ISC"
+    "Unicode-3.0",
+    "Zlib",
 ]
 # The confidence threshold for detecting a license from license text.
 # The higher the value, the more closely the license text must be to the

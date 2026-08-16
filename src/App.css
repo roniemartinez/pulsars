@@ -10,5 +10,11 @@ body {
 }
 
 body {
-  margin: 0 !important;
+  margin: 0;
+}
+
+.error {
+  padding: 1rem;
+  font-family: system-ui, sans-serif;
+  color: #b00020;
 }

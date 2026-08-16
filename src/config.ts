@@ -1,0 +1,62 @@
+// Commented-out entries are fortune-sheet features that are switched off.
+export const toolbarItems: string[] = [
+  "undo",
+  "redo",
+  // "format-painter",
+  // "clear-format",
+  "|",
+  // "currency-format",
+  // "percentage-format",
+  // "number-decrease",
+  // "number-increase",
+  "format",
+  "font",
+  "font-size",
+  "|",
+  "bold",
+  "italic",
+  "strike-through",
+  // "underline",
+  "|",
+  "font-color",
+  // "background",
+  // "border",
+  // "merge-cell",
+  // "|",
+  // "horizontal-align",
+  // "vertical-align",
+  // "text-wrap",
+  // "text-rotation",
+  // "|",
+  // "freeze",
+  // "sort",
+  // "image",
+  // "comment",
+  // "quick-formula",
+];
+
+export const cellContextMenu: string[] = [
+  "copy",
+  "paste",
+  "|",
+  "insert-row",
+  "insert-column",
+  "delete-row",
+  "delete-column",
+  "delete-cell",
+  "hide-row",
+  "hide-column",
+  // "clear",
+  // "sort",
+  // "filter",
+  // "chart",
+  // "image",
+  // "link",
+  // "data",
+  // "cell-format",
+];
+
+// align with umya-spreadsheet
+export const defaultFontSize = 11;
+
+export const xlsxFilters = [{ name: "Spreadsheet", extensions: ["xlsx"] }];
