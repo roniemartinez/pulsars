@@ -6,6 +6,7 @@ The following cool libraries made it possible to build **Pulsars** 🚀:
 
 - [fortune-sheet](https://github.com/ruilisi/fortune-sheet): TypeScript library for the spreadsheet interface
 - [umya-spreadsheet](https://github.com/MathNya/umya-spreadsheet): Rust library that takes care of reading and writing xlsx files
+- [lucide](https://lucide.dev): icon set used in the toolbar
 
 ![Pulsars](./screenshots/pulsars.png)
 
@@ -16,4 +17,4 @@ The following cool libraries made it possible to build **Pulsars** 🚀:
 ## Attribution
 
 - Application Icon: <a href="https://www.flaticon.com/free-icons/miscellaneous" title="miscellaneous icons">Miscellaneous icons created by Freepik - Flaticon</a>
-- Toolbar Icons: https://pictogrammers.com/library/mdil/
+- Toolbar Icons: [Lucide](https://lucide.dev), ISC License

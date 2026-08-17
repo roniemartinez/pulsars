@@ -1,0 +1,51 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v4.2.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+
+  - repo: https://github.com/biomejs/pre-commit
+    rev: v2.5.7
+    hooks:
+      - id: biome-check
+        additional_dependencies: ["@biomejs/biome@2.5.8"]
+
+  - repo: local
+    hooks:
+      - id: cargo-fmt
+        name: cargo fmt
+        entry: cargo fmt --manifest-path src-tauri/Cargo.toml --
+        language: system
+        types: [rust]
+        pass_filenames: false
+
+      - id: cargo-clippy
+        name: cargo clippy
+        entry: cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings
+        language: system
+        types: [rust]
+        pass_filenames: false
+
+      - id: cargo-deny
+        name: cargo deny check
+        entry: cargo deny --manifest-path src-tauri/Cargo.toml check
+        language: rust
+        additional_dependencies: ["cli:cargo-deny:0.19.0"]
+        pass_filenames: false
+        files: ^src-tauri/(Cargo\.(toml|lock)|deny\.toml)$
+
+      - id: pnpm-audit
+        name: pnpm audit
+        entry: pnpm audit --prod --audit-level=high
+        language: system
+        pass_filenames: false
+        files: ^(package\.json|pnpm-lock\.yaml)$
