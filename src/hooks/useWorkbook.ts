@@ -1,7 +1,7 @@
 import type { Op, Sheet } from "@fortune-sheet/core";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { formatError } from "../errors";
 
 export type Workbook = {
@@ -10,6 +10,7 @@ export type Workbook = {
   loadError: string | null;
   actionError: string | null;
   applyOps: (ops: Op[]) => void;
+  flushOps: () => Promise<void>;
   reportError: (message: string) => void;
   dismissError: () => void;
 };
@@ -21,7 +22,11 @@ export function useWorkbook(): Workbook {
   const [actionError, setActionError] = useState<string | null>(null);
 
   useEffect(() => {
-    const unlisten = listen("reload", () => setRevision((current) => current + 1));
+    const unlisten = listen("reload", () => {
+      setSheets(null);
+      setLoadError(null);
+      setRevision((current) => current + 1);
+    });
 
     return () => {
       unlisten.then((stop) => stop()).catch((cause: unknown) => setActionError(formatError(cause)));
@@ -52,11 +57,26 @@ export function useWorkbook(): Workbook {
     };
   }, [revision]);
 
+  const queue = useRef<Promise<void>>(Promise.resolve());
+
   const applyOps = useCallback((ops: Op[]) => {
-    invoke("apply_ops", { ops }).catch((cause: unknown) => setActionError(formatError(cause)));
+    queue.current = queue.current
+      .then(() => invoke<void>("apply_ops", { ops }))
+      .catch((cause: unknown) => setActionError(formatError(cause)));
   }, []);
+
+  const flushOps = useCallback(() => queue.current, []);
 
   const dismissError = useCallback(() => setActionError(null), []);
 
-  return { sheets, revision, loadError, actionError, applyOps, reportError: setActionError, dismissError };
+  return {
+    sheets,
+    revision,
+    loadError,
+    actionError,
+    applyOps,
+    flushOps,
+    reportError: setActionError,
+    dismissError,
+  };
 }

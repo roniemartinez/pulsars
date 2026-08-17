@@ -144,9 +144,13 @@ fn replace_cell(worksheet: &mut Worksheet, column: u32, row: u32, value: &Value)
     Ok(())
 }
 
-/// fortune-sheet encodes these toggles as 1 or 0 rather than as booleans.
+/// fortune-sheet encodes these toggles as 1 or 0. Booleans are accepted too, so
+/// a payload change cannot silently turn the toggle into a no-op.
 fn is_enabled(value: &Value) -> bool {
-    value.as_u64() == Some(1)
+    match value {
+        Value::Bool(enabled) => *enabled,
+        _ => value.as_u64() == Some(1),
+    }
 }
 
 /// Renders a JSON scalar as cell text.
@@ -162,7 +166,7 @@ fn as_text(value: &Value) -> String {
 
 #[cfg(test)]
 mod tests {
-    use super::{Error, HashMap, Op, OpKind, Value, apply, as_text};
+    use super::{Error, HashMap, Op, OpKind, Value, apply, as_text, is_enabled};
     use serde_json::json;
 
     #[test]
@@ -225,6 +229,16 @@ mod tests {
         let result = apply(&mut workbook, &mut sheet_map(), vec![op]);
 
         assert!(matches!(result, Err(Error::MalformedOp(_))), "expected rejection, got {result:?}");
+    }
+
+    #[test]
+    fn toggles_accept_numbers_and_booleans() {
+        assert!(is_enabled(&json!(1)));
+        assert!(is_enabled(&json!(true)));
+        assert!(!is_enabled(&json!(0)));
+        assert!(!is_enabled(&json!(false)));
+        assert!(!is_enabled(&json!(null)));
+        assert!(!is_enabled(&json!("1")));
     }
 
     #[test]

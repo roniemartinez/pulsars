@@ -15,7 +15,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "tauri": "tauri",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json",
     "lint": "biome check",
     "format": "biome check --write"
   },

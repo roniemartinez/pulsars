@@ -7,8 +7,11 @@ import { useWorkbook } from "./hooks/useWorkbook";
 import { createCustomToolbarItems } from "./toolbar";
 
 export default function App() {
-  const { sheets, revision, loadError, actionError, applyOps, reportError, dismissError } = useWorkbook();
-  const customToolbarItems = useMemo(() => createCustomToolbarItems(reportError), [reportError]);
+  const { sheets, revision, loadError, actionError, applyOps, flushOps, reportError, dismissError } = useWorkbook();
+  const customToolbarItems = useMemo(
+    () => createCustomToolbarItems({ onError: reportError, flushOps }),
+    [reportError, flushOps],
+  );
 
   if (loadError !== null) {
     return <div className="load-error">{loadError}</div>;

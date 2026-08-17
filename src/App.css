@@ -37,7 +37,13 @@ body {
   border-bottom: 1px solid #f0b4ae;
 }
 
+.action-error span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .action-error button {
+  flex-shrink: 0;
   padding: 0.15rem 0.6rem;
   font: inherit;
   color: inherit;
