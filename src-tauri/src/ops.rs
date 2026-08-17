@@ -43,11 +43,9 @@ fn apply_cell_change(workbook: &mut Workbook, sheet_map: &HashMap<String, String
 
     match (op.segment(3), op.segment(4)) {
         ("ct", "") => retype_cell(worksheet, column, row, &op.value),
-        // The format definition itself carries nothing we persist.
         ("ct", _) => {}
         ("m" | "v", _) => {
             let text = as_text(&op.value);
-            worksheet.remove_cell((column, row));
             worksheet.cell_mut((column, row)).set_value_string(text);
         }
         ("ff", _) => {
@@ -86,8 +84,8 @@ fn coordinate(op: &Op) -> Result<(u32, u32)> {
         op.path
             .get(index)
             .and_then(Value::as_u64)
-            .map(|value| (value + 1) as u32)
-            .ok_or_else(|| Error::MalformedOp(format!("path segment {index} is not a number")))
+            .and_then(|value| u32::try_from(value.checked_add(1)?).ok())
+            .ok_or_else(|| Error::MalformedOp(format!("path segment {index} is not a valid coordinate")))
     };
 
     Ok((read(2)?, read(1)?))
@@ -100,7 +98,9 @@ fn retype_cell(worksheet: &mut Worksheet, column: u32, row: u32, value: &Value) 
     let cell = worksheet.cell_mut((column, row));
 
     if is_numeric {
-        if let Some(number) = cell.value_number() {
+        let number = cell.value_number().or_else(|| cell.value().parse::<f64>().ok());
+
+        if let Some(number) = number {
             cell.set_value_number(number);
         }
     } else {
@@ -124,7 +124,6 @@ fn replace_cell(worksheet: &mut Worksheet, column: u32, row: u32, value: &Value)
         return Ok(());
     };
 
-    worksheet.remove_cell((column, row));
     let cell = worksheet.cell_mut((column, row));
 
     if cell_type == "n" {
@@ -163,7 +162,7 @@ fn as_text(value: &Value) -> String {
 
 #[cfg(test)]
 mod tests {
-    use super::as_text;
+    use super::{Error, HashMap, Op, OpKind, Value, apply, as_text};
     use serde_json::json;
 
     #[test]
@@ -188,5 +187,55 @@ mod tests {
     #[test]
     fn null_becomes_empty() {
         assert_eq!(as_text(&json!(null)), "");
+    }
+
+    fn sheet_map() -> HashMap<String, String> {
+        HashMap::from([("1".to_owned(), "Sheet1".to_owned())])
+    }
+
+    fn value_op(path: Vec<Value>, value: Value) -> Op {
+        Op { op: OpKind::Replace, id: "1".to_owned(), path, value }
+    }
+
+    #[test]
+    fn editing_a_value_keeps_the_cell_style() {
+        let mut workbook = umya_spreadsheet::new_file();
+        {
+            let cell = workbook.sheet_by_name_mut("Sheet1").unwrap().cell_mut((1u32, 1u32));
+            cell.set_value_number(42.0);
+            cell.style_mut().set_background_color("FFFF0000");
+            cell.style_mut().font_mut().font_bold_mut().set_val(true);
+        }
+
+        let op = value_op(vec![json!("data"), json!(0), json!(0), json!("v")], json!("hello"));
+        apply(&mut workbook, &mut sheet_map(), vec![op]).unwrap();
+
+        let cell = workbook.sheet_by_name_mut("Sheet1").unwrap().cell_mut((1u32, 1u32));
+        assert_eq!(cell.value(), "hello");
+        assert!(cell.style().fill().is_some(), "background was dropped");
+        assert_eq!(cell.style().font().map(|font| font.bold()), Some(true), "bold was dropped");
+    }
+
+    #[test]
+    fn out_of_range_coordinates_are_rejected() {
+        let mut workbook = umya_spreadsheet::new_file();
+        let path = vec![json!("data"), json!(u64::from(u32::MAX) + 1), json!(0), json!("v")];
+        let op = value_op(path, json!("x"));
+
+        let result = apply(&mut workbook, &mut sheet_map(), vec![op]);
+
+        assert!(matches!(result, Err(Error::MalformedOp(_))), "expected rejection, got {result:?}");
+    }
+
+    #[test]
+    fn retyping_parses_text_into_a_number() {
+        let mut workbook = umya_spreadsheet::new_file();
+        workbook.sheet_by_name_mut("Sheet1").unwrap().cell_mut((1u32, 1u32)).set_value_string("42");
+
+        let op = value_op(vec![json!("data"), json!(0), json!(0), json!("ct")], json!({ "t": "n" }));
+        apply(&mut workbook, &mut sheet_map(), vec![op]).unwrap();
+
+        let cell = workbook.sheet_by_name_mut("Sheet1").unwrap().cell_mut((1u32, 1u32));
+        assert_eq!(cell.value_number(), Some(42.0));
     }
 }

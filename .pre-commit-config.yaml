@@ -38,7 +38,8 @@ repos:
       - id: cargo-deny
         name: cargo deny check
         entry: cargo deny --manifest-path src-tauri/Cargo.toml check
-        language: system
+        language: rust
+        additional_dependencies: ["cli:cargo-deny:0.19.0"]
         pass_filenames: false
         files: ^src-tauri/(Cargo\.(toml|lock)|deny\.toml)$
 

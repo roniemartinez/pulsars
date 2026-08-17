@@ -6,6 +6,7 @@ authors = ["Ronie Martinez <ronmarti18@gmail.com>"]
 license = "GPL-3.0-or-later"
 repository = "https://github.com/roniemartinez/pulsars"
 edition = "2024"
+rust-version = "1.85"
 
 [profile.release]
 # https://v2.tauri.app/concept/size/

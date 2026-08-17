@@ -6,41 +6,57 @@ import { formatError } from "../errors";
 
 export type Workbook = {
   sheets: Sheet[] | null;
-  error: string | null;
+  revision: number;
+  loadError: string | null;
+  actionError: string | null;
   applyOps: (ops: Op[]) => void;
   reportError: (message: string) => void;
+  dismissError: () => void;
 };
 
 export function useWorkbook(): Workbook {
   const [sheets, setSheets] = useState<Sheet[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [revision, setRevision] = useState(0);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [actionError, setActionError] = useState<string | null>(null);
 
-  // fortune-sheet reads `data` as initial state only, so clearing it is what
-  // forces the grid to remount with the newly opened file.
   useEffect(() => {
-    const unlisten = listen("reload", () => setSheets(null));
+    const unlisten = listen("reload", () => setRevision((current) => current + 1));
 
     return () => {
-      unlisten.then((stop) => stop()).catch((cause: unknown) => setError(formatError(cause)));
+      unlisten.then((stop) => stop()).catch((cause: unknown) => setActionError(formatError(cause)));
     };
   }, []);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: revision is a re-run signal, not a value read here
   useEffect(() => {
-    if (sheets !== null) {
-      return;
-    }
+    let active = true;
 
     invoke<Sheet[]>("serialize")
       .then((loaded) => {
+        if (!active) {
+          return;
+        }
         setSheets(loaded);
-        setError(null);
+        setLoadError(null);
       })
-      .catch((cause: unknown) => setError(formatError(cause)));
-  }, [sheets]);
+      .catch((cause: unknown) => {
+        if (!active) {
+          return;
+        }
+        setLoadError(formatError(cause));
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [revision]);
 
   const applyOps = useCallback((ops: Op[]) => {
-    invoke("apply_ops", { ops }).catch((cause: unknown) => setError(formatError(cause)));
+    invoke("apply_ops", { ops }).catch((cause: unknown) => setActionError(formatError(cause)));
   }, []);
 
-  return { sheets, error, applyOps, reportError: setError };
+  const dismissError = useCallback(() => setActionError(null), []);
+
+  return { sheets, revision, loadError, actionError, applyOps, reportError: setActionError, dismissError };
 }
