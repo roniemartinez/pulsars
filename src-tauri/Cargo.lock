@@ -4393,9 +4393,9 @@ dependencies = [
 
 [[package]]
 name = "umya-spreadsheet"
-version = "3.0.1"
+version = "3.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f2ecbb0bd4092e75183ae19674fc209a5ba016b0bd796378623d1980b6bec044"
+checksum = "560ef3816b56fce89975a58a7f271c57f7b3873aac8fba70572f93f3683be405"
 dependencies = [
  "aes",
  "base64 0.22.1",
