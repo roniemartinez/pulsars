@@ -17,7 +17,7 @@ repos:
     rev: v2.5.13
     hooks:
       - id: biome-check
-        additional_dependencies: ["@biomejs/biome@2.5.12"]
+        additional_dependencies: ["@biomejs/biome@2.5.13"]
 
   - repo: local
     hooks:
