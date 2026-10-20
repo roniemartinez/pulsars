@@ -13,7 +13,7 @@ importers:
         version: 1.0.4
       '@fortune-sheet/react':
         specifier: 1.0.4
-        version: 1.0.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 1.0.4(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@tauri-apps/api':
         specifier: 2.12.3
         version: 2.12.3
@@ -25,13 +25,13 @@ importers:
         version: 2.7.1
       lucide-react:
         specifier: 1.59.0
-        version: 1.59.0(@types/react@19.3.0)(react@19.3.0)
+        version: 1.59.0(@types/react@19.3.0)(react@19.3.1)
       react:
-        specifier: 19.3.0
-        version: 19.3.0
+        specifier: 19.3.1
+        version: 19.3.1
       react-dom:
-        specifier: 19.3.0
-        version: 19.3.0(react@19.3.0)
+        specifier: 19.3.1
+        version: 19.3.1(react@19.3.1)
     devDependencies:
       '@biomejs/biome':
         specifier: 2.5.15
@@ -603,13 +603,13 @@ packages:
     resolution: {integrity: sha512-zkd+e9S1AQHhmaBKye9zlFHWjOwVgqXl1q3ECYy8561K7qxR2cREf/STLskulBFd78k6AOFeA+ff1TtEzk9bAA==}
     engines: {node: ^10 || ^12 || >=14}
 
-  react-dom@19.3.0:
-    resolution: {integrity: sha512-JDk8dgif51OjFoDE70+OT9ICyYr+69HlmihNwp1+Nsfbna3t5sIiCa9ZJktDmQ4/1b/rn26hIAR2uYXDMr5r0Q==}
+  react-dom@19.3.1:
+    resolution: {integrity: sha512-Y0bARz53lhEC1NMCASs0/j+faB/zqt3R8hpvg1e8+61ZVJ4UL0UdC4cBbXfZMcIuhrfgeILTLe+ZeBCavQPtKQ==}
     peerDependencies:
-      react: ^19.3.0
+      react: ^19.3.1
 
-  react@19.3.0:
-    resolution: {integrity: sha512-E8LUcbtBWt20bbl2YoHfx4ZDBdxVTfOKtCZn9cDSJ4l6/nuoApcpIBcj47t2wZoVX8g2ZHuMHbiShgCR1T5Sog==}
+  react@19.3.1:
+    resolution: {integrity: sha512-QNhWdt7nrgVWWQG58QuGsAR3jv3Hbe4mb4vz7w2csnHavciZJgda1CPNaldF6eVxv90ud3jUXpKlHL69gO38yw==}
     engines: {node: '>=0.10.0'}
 
   regenerator-runtime@0.14.1:
@@ -743,14 +743,14 @@ snapshots:
       '@formulajs/formulajs': 2.9.3
       tiny-emitter: 2.1.0
 
-  '@fortune-sheet/react@1.0.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@fortune-sheet/react@1.0.4(react-dom@19.3.1(react@19.3.1))(react@19.3.1)':
     dependencies:
       '@fortune-sheet/core': 1.0.4
       '@types/regenerator-runtime': 0.13.8
       immer: 9.0.21
       lodash: 4.18.1
-      react: 19.3.0
-      react-dom: 19.3.0(react@19.3.0)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
       regenerator-runtime: 0.14.1
 
   '@oxc-project/types@0.153.0': {}
@@ -1004,9 +1004,9 @@ snapshots:
 
   lodash@4.18.1: {}
 
-  lucide-react@1.59.0(@types/react@19.3.0)(react@19.3.0):
+  lucide-react@1.59.0(@types/react@19.3.0)(react@19.3.1):
     dependencies:
-      react: 19.3.0
+      react: 19.3.1
     optionalDependencies:
       '@types/react': 19.3.0
 
@@ -1024,12 +1024,12 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.2
 
-  react-dom@19.3.0(react@19.3.0):
+  react-dom@19.3.1(react@19.3.1):
     dependencies:
-      react: 19.3.0
+      react: 19.3.1
       scheduler: 0.28.0
 
-  react@19.3.0: {}
+  react@19.3.1: {}
 
   regenerator-runtime@0.14.1: {}
 
