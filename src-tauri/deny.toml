@@ -75,19 +75,6 @@ ignore = [
     #"a-crate-that-is-yanked@0.1.1", # you can also ignore yanked crate versions if you wish
     #{ crate = "a-crate-that-is-yanked@0.1.1", reason = "you can specify why you are ignoring the yanked crate" },
 
-    # GTK3 bindings, reached through tauri for the Linux webview. Tauri v2 has
-    # no GTK4 path yet.
-    { id = "RUSTSEC-2024-0411", reason = "gdkwayland-sys, transitive via tauri" },
-    { id = "RUSTSEC-2024-0412", reason = "gdk, transitive via tauri" },
-    { id = "RUSTSEC-2024-0413", reason = "atk, transitive via tauri" },
-    { id = "RUSTSEC-2024-0414", reason = "gdkx11-sys, transitive via tauri" },
-    { id = "RUSTSEC-2024-0415", reason = "gtk, transitive via tauri" },
-    { id = "RUSTSEC-2024-0416", reason = "atk-sys, transitive via tauri" },
-    { id = "RUSTSEC-2024-0417", reason = "gdkx11, transitive via tauri" },
-    { id = "RUSTSEC-2024-0418", reason = "gdk-sys, transitive via tauri" },
-    { id = "RUSTSEC-2024-0419", reason = "gtk3-macros, transitive via tauri" },
-    { id = "RUSTSEC-2024-0420", reason = "gtk-sys, transitive via tauri" },
-
     # Unicode character tables, reached through umya-spreadsheet.
     { id = "RUSTSEC-2025-0075", reason = "unic-char-range, transitive via umya-spreadsheet" },
     { id = "RUSTSEC-2025-0080", reason = "unic-common, transitive via umya-spreadsheet" },
